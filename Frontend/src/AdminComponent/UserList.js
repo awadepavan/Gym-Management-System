@@ -3,36 +3,36 @@ import UserServices from '../services/UserServices';
 
 class UserComponents extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            users:[]
+            users: []
         }
-       
+
         this.addUser = this.addUser.bind(this);
     }
 
-    componentDidMount(){
-        UserServices.getUsers().then((response) =>{
-            this.setState({users:response.data})
+    componentDidMount() {
+        UserServices.getUsers().then((response) => {
+            this.setState({ users: response.data })
         })
     }
 
-   
+
     addUser() {
         this.props.history.push('/addUsers');
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                <h1 style={{textAlign:'center', color:'orange'}}>User List</h1>
+                <h1 style={{ textAlign: 'center', color: 'orange' }}>User List</h1>
                 <div>
                     <button className="btn btn-success" onClick={this.addUser}>Add User/Trainer</button>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                 </div>
-                <table className = "table  table-dark"  style={{color:'white',backgroundColor:"black"}}>
+                <table className="table  table-dark" style={{ color: 'white', backgroundColor: "black" }}>
 
                     <thead>
                         <tr>
@@ -41,7 +41,7 @@ class UserComponents extends React.Component {
                             <th>Contact</th>
                             <th>Address</th>
                             <th>Email</th>
-                            <th>Password</th>
+                            {/* <th>Password</th> */}
                             <th>Role</th>
                         </tr>
                     </thead>
@@ -50,15 +50,15 @@ class UserComponents extends React.Component {
                         {
                             this.state.users.map(
                                 users =>
-                                <tr key = {users.user_id}>
-                                    <td>{users.user_id}</td>
-                                    <td>{users.name}</td>
-                                    <td>{users.contact}</td>
-                                    <td>{users.address}</td>
-                                    <td>{users.email}</td>
-                                    <td>{users.password}</td>
-                                    <td>{users.role}</td>
-                                </tr>
+                                    <tr key={users.user_id}>
+                                        <td>{users.user_id}</td>
+                                        <td>{users.name}</td>
+                                        <td>{users.contact}</td>
+                                        <td>{users.address}</td>
+                                        <td>{users.email}</td>
+                                        {/* <td>{users.password}</td> */}
+                                        <td>{users.role}</td>
+                                    </tr>
                             )
                         }
                     </tbody>
